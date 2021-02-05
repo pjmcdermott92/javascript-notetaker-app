@@ -1,0 +1,220 @@
+:root {
+    /* Note Colors */
+    --default-note-color:  rgb(255, 216, 143);
+    --green-note-color: rgb(159, 233, 159);
+    --red-note-color: rgb(233, 189, 159);
+    --purple-note-color: rgb(175, 159, 233);
+    --blue-note-color: rgb(159, 200, 233);
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.page-wrapper {
+    min-height: 100vh;
+    --footer-height: 5vh;
+    position: relative;
+}
+
+.content-wrapper {
+    padding-bottom: var(--footer-height);
+}
+
+.app-footer {
+    height: var(--footer-height);
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    color: #AAA;
+    text-align: center;
+}
+
+.app-header {
+    background-color: rgb(221, 145, 4);
+    height: 3rem;
+    display: flex;
+    align-items: center;
+    padding: 0 2rem;
+    margin-bottom: .5rem;
+    box-shadow: 0 2px 2px;
+}
+
+.app-title {
+    margin: 0;
+    color: #EEE;
+}
+
+.container {
+    padding: 0 1rem;
+    margin-bottom: 1rem;
+}
+
+.notes-count {
+    color: #444;
+}
+
+.notes-container {
+    margin-top: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+
+.note {
+    background-color: var(--default-note-color);
+    width: 300px;
+    min-height: 300px;
+    padding: 1rem;
+    box-shadow: 0 2px 2px;
+    position: relative;
+    font-family: cursive;
+}
+
+.note-title-section {
+    width: 100%;
+    border-bottom: 1px solid #CCC;
+    padding: .5rem;
+    font-weight: bold;
+}
+
+.note-content-section {
+    min-height: 80%;
+    padding: .5rem;
+}
+
+.note-title-section, .note-content-section {
+    outline: none;
+    color: #666;
+}
+
+.note-title-section:focus, .note-content-section:focus {
+    color: #000;
+}
+
+.delete-note-btn, .note-color-btn {
+    position: absolute;
+    bottom: 1rem;
+    right: 1rem;
+    width: 30px;
+    height: 30px;
+    opacity: 0;
+    cursor: pointer;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.note-color-btn {
+    left: 1rem;
+}
+
+.delete-note-btn:hover, .note-color-btn:hover {
+    background-color: #CCC;
+    opacity: 1;
+}
+
+.note:hover .delete-note-btn, .note:hover .note-color-btn {
+    opacity: 0.45;
+}
+
+.note-colors {
+    position: absolute;
+    bottom: 3rem;
+    left: 1rem;
+    width: 0;
+    opacity: 0;
+    background-color: #FFF;
+    border-radius: 20px;
+    height: 0;
+    display: flex;
+    align-items: center;
+    padding: 0 .5rem;
+    transition: all 250ms;
+}
+
+.note-colors.active {
+    opacity: 1;
+    width: 50%;
+    height: 2rem;
+}
+
+.note-colors .color {
+    width: 20px;
+    height: 20px;
+    border: 1px solid #ccc;
+    cursor: pointer;
+}
+
+.note-colors .color:not(:first-child) {
+    margin-left: .5rem;
+}
+
+.note-colors .color.default {
+    background-color: var(--default-note-color);
+}
+
+.note-colors .color.green {
+    background-color: var(--green-note-color);
+}
+
+.note-colors .color.red {
+    background-color: var(--red-note-color);
+}
+
+.note-colors .color.blue {
+    background-color: var(--blue-note-color);
+}
+
+.note-colors .color.purple {
+    background-color: var(--purple-note-color);
+}
+
+.note-colors .color.active {
+    border: 2px solid #666;
+}
+
+.note.new-btn {
+    opacity: 0.35;
+    border: 3px dashed #666;
+    background: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: none;
+}
+
+.note.new-btn .fa.add-note {
+    padding: 2rem;
+    font-size: 5rem;
+}
+
+.note.new-btn:hover {
+    opacity: 0.35;
+    border: 3px dashed rgb(211, 178, 81);
+    background-color: rgb(255, 216, 143);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.note.new-btn:hover .fa.add-note {
+    background-color: rgb(211, 178, 81);
+    border-radius: 50%;
+}
+
+.note.new-btn:hover::after {
+    content: 'Click to Add New Note';
+    position: absolute;
+    bottom: 1rem;
+    font-size: 1.2rem;
+}
